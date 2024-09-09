@@ -5,6 +5,7 @@ import Navbar from 'react-bootstrap/Navbar'
 import Container from 'react-bootstrap/Container'
 import { Link } from 'react-router-dom'
 import './Header.css'
+import { toast } from 'sonner'
 
 function Header() {
 
@@ -17,6 +18,30 @@ function Header() {
     const handleNavClick = () => {
 
         setExpanded(false)
+
+    }
+
+
+    const HandleLogout = ()=>{
+
+        handleNavClick()
+
+
+        if(!sessionStorage.getItem("user")){
+
+
+            toast.warning("No User Found Please Login..!")
+
+
+        }else{
+
+
+            sessionStorage.removeItem("user")
+            sessionStorage.removeItem("token")
+            toast.success("LogOut Success..!")
+
+        }
+
 
     }
 
@@ -175,7 +200,7 @@ function Header() {
                                 <div className='dropdown-content'>
 
                                     <Link to={'/auth'} className='drop-link d-block' onClick={handleNavClick}>Login</Link>
-                                    <Link to={'/'} className='drop-link d-block' onClick={handleNavClick}>Logout</Link>
+                                    <Link to={'/'} className='drop-link d-block' onClick={HandleLogout}>Logout</Link>
                                     <Link to={'/'} className='drop-link d-block' onClick={handleNavClick}>Orders</Link>
 
                                 </div>

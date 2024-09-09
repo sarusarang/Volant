@@ -2,6 +2,7 @@ import React from "react"
 import { useState, useEffect } from "react"
 import { useLocation } from "react-router-dom"
 import { Routes, Route } from "react-router-dom"
+import { Toaster } from "sonner"
 import Landing from "./Pages/Landing"
 import Footer from "./Components/Footer"
 import Header from "./Components/Header"
@@ -84,6 +85,9 @@ function App() {
 
 
       {!Hide && <Footer />}
+
+
+      <Toaster richColors position="top-center"/>
 
     </>
 

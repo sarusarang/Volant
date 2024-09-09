@@ -105,8 +105,6 @@ function Footer() {
                 </p>
 
 
-
-
               </div>
 
 
@@ -180,29 +178,29 @@ function Footer() {
 
 
         {/* Socail Media Links */}
-        <section class="d-flex justify-content-center pb-3">
+        <section class="d-flex justify-content-center pb-3 ">
 
           <a data-mdb-ripple-init class="btn m-1" href="https://www.facebook.com/happycouplesolution/" role="button" target='_blank' style={{ borderRadius: '5rem' }}
-          ><i class="fab fa-facebook-f text-white"></i
+          ><i class="fab fa-facebook-f text-white fa-lg"></i
           ></a>
 
 
           <a data-mdb-ripple-init class="btn m-1" href="https://x.com/happycouplesolu" role="button" target='_blank' style={{ borderRadius: '5rem' }}
-          ><i class="fa-brands fa-x-twitter text-white"></i></a>
+          ><i class="fa-brands fa-x-twitter text-white fa-lg"></i></a>
 
           <a data-mdb-ripple-init class="btn  m-1" href="https://www.instagram.com/happycouplesolution/" role="button" target='_blank' style={{ borderRadius: '5rem' }}
-          ><i class="fab fa-instagram text-white"></i
+          ><i class="fab fa-instagram text-white fa-lg"></i
           ></a>
 
 
           <a data-mdb-ripple-init class="btn m-1" href="https://www.youtube.com/@happycouplesolution" role="button" target='_blank' style={{ borderRadius: '5rem' }}
-          ><i class="fa-brands fa-youtube text-white"></i></a>
+          ><i class="fa-brands fa-youtube text-white fa-lg"></i></a>
 
 
 
 
           <a data-mdb-ripple-init class="btn  m-1" href="https://in.pinterest.com/happycouplesolution/" role="button" target='_blank' style={{ borderRadius: '5rem' }}
-          ><i class="fa-brands fa-pinterest text-white"></i></a>
+          ><i class="fa-brands fa-pinterest text-white fa-lg"></i></a>
 
 
         </section>

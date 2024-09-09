@@ -4,6 +4,7 @@ import App from './App.jsx'
 import './index.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { BrowserRouter } from 'react-router-dom'
+import { GoogleOAuthProvider } from '@react-oauth/google';
 
 createRoot(document.getElementById('root')).render(
 
@@ -13,7 +14,16 @@ createRoot(document.getElementById('root')).render(
 
     <BrowserRouter>
 
-      <App />
+
+      <GoogleOAuthProvider clientId='619576952029-5o2sq8ckfneg7a2ns1902sdra9lsc5lc.apps.googleusercontent.com'>
+
+
+        <App />
+
+
+      </GoogleOAuthProvider>
+
+
 
     </BrowserRouter>
 
