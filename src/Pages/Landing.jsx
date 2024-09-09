@@ -4,6 +4,7 @@ import GentsSlide from '../Components/GentsSlide'
 import LadiesSlide from '../Components/LadiesSlide'
 import BoysSlide from '../Components/BoysSlide'
 import Hero from '../Components/Hero'
+import WhatsApp from '../Components/WhatsApp'
 
 function Landing() {
 
@@ -20,6 +21,7 @@ function Landing() {
             <section className='w-100'>
 
 
+                {/* Slider */}
                 <div className=''>
 
                     <Slider />
@@ -27,12 +29,16 @@ function Landing() {
                 </div>
 
 
+                {/* Gents slide */}
                 <div className=''>
 
                     <GentsSlide />
 
                 </div>
 
+
+
+                {/* Ladies Slides */}
                 <div className=''>
 
                     <LadiesSlide />
@@ -40,6 +46,7 @@ function Landing() {
                 </div>
 
 
+                {/* Boys Slide */}
                 <div className=''>
 
                     <BoysSlide />
@@ -47,9 +54,18 @@ function Landing() {
                 </div>
 
 
+                {/* Hero */}
                 <div className=''>
 
                     <Hero />
+
+                </div>
+
+
+                {/* WhatsApp Logo */}
+                <div className='Whats-app'>
+
+                    <WhatsApp />
 
                 </div>
 

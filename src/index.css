@@ -139,3 +139,34 @@ html {
 .icon-hover:hover i {
     color: #3b71ca !important;
 }
+
+
+/* Whatsapp Logo */
+.Landing {
+
+    position: relative;
+
+}
+
+.Whats-app {
+
+    position: fixed;
+    bottom: 2.8rem;
+    right: 3rem;
+    z-index: 1000;
+
+}
+
+.btn-WP {
+
+    padding: 5px 18px !important;
+    background-color: #25D366 !important;
+    color: #fff !important;
+    border-radius: 50px !important;
+    text-decoration: none !important;
+    font-weight: bold !important;
+    font-size: 40px !important;
+    text-align: center !important;
+
+
+}
