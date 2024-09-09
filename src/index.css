@@ -24,3 +24,118 @@ html {
     scroll-behavior: smooth
 }
 
+
+
+/* Single Products */
+.btn-buynow {
+
+    background-color: rgb(0, 0, 0) !important;
+    border: 1px solid #2a2a2a !important;
+    padding: 1rem 3rem 1rem 3rem !important;
+    font-size: large !important;
+    font-weight: 700 !important;
+    color: #fff !important;
+    border-radius: 0.8rem !important;
+
+}
+
+
+
+
+.btn-addcart {
+
+    background-color: #fff !important;
+    border: 1px solid #000 !important;
+    padding: 1rem 3rem 1rem 3rem !important;
+    font-size: large !important;
+    font-weight: 700 !important;
+    color: rgb(0, 0, 0) !important;
+    border-radius: 0.8rem !important;
+
+}
+
+.key-benfits {
+
+    padding-left: 1rem;
+    padding-right: 1rem;
+
+}
+
+
+.key-benfits li {
+
+    font-size: medium;
+    font-weight: 400;
+    text-align: justify;
+    margin-bottom: 0.8rem;
+
+}
+
+.howto-use li {
+
+    font-size: medium;
+    font-weight: 400;
+    text-align: justify;
+    margin-bottom: 0.8rem;
+    list-style: decimal;
+
+}
+
+
+.FAQ li {
+
+    font-size: medium;
+    font-weight: 400;
+    text-align: justify;
+    margin-bottom: 1rem;
+    list-style: decimal;
+
+}
+
+
+.nav-pills .nav-link.active,
+.nav-pills .show .nav-link {
+    color: var(--bs-nav-pills-link-active-color) !important;
+    background-color: rgb(0, 0, 0) !important;
+}
+
+
+
+.btn_nos {
+    width: 90px;
+    height: 40px;
+    margin-right: 1rem;
+    margin-top: 1rem;
+    border: 1px solid #000 !important;
+    font-weight: 500;
+    background-color: white;
+    border-radius: 5px;
+    transition: all 0.3s ease-out;
+
+}
+
+
+
+.btn_nos:focus {
+    background-color: #000;
+    color: white;
+    border: 0;
+}
+
+
+.btn_nos.active {
+    background-color: #000;
+    color: white;
+    border: 0;
+}
+
+
+
+.icon-hover:hover {
+    border-color: #3b71ca !important;
+    background-color: white !important;
+}
+
+.icon-hover:hover i {
+    color: #3b71ca !important;
+}

@@ -6,6 +6,7 @@ import { Skeleton } from '@mui/material'
 import './ProductSlide.css'
 import { GetProducts, AddtoCart } from '../Services/AllApi'
 import { toast } from 'sonner'
+import { useNavigate } from 'react-router-dom'
 
 function LadiesSlide() {
 
@@ -15,6 +16,8 @@ function LadiesSlide() {
 
     // Product Data
     const [Product, SetProduct] = useState([])
+
+    const Navigate = useNavigate()
 
 
 
@@ -227,7 +230,7 @@ function LadiesSlide() {
                                                     <div className="el-wrapper">
 
 
-                                                        <div className="box-up">
+                                                        <div className="box-up"  onClick={() => { Navigate(`/pro/${item.id}`) }}>
 
                                                             <img className="img-fluid img" loading='lazy' src={item.image} alt="img" style={{ height: '100%' }} />
 

@@ -1,26 +1,27 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
+import { useEffect, useState } from 'react'
+import { GetProducts } from '../Services/AllApi'
+import './ProductSlide.css'
+import { Skeleton } from '@mui/material'
+import { useNavigate } from 'react-router-dom'
 import Carousel from "react-multi-carousel"
 import "react-multi-carousel/lib/styles.css"
-import { Skeleton } from '@mui/material'
-import './ProductSlide.css'
-import { GetProducts,AddtoCart } from '../Services/AllApi'
-import { toast } from 'sonner'
-import { useNavigate } from 'react-router-dom'
 
-function GentsSlide() {
+function ProductSlide() {
 
 
 
+    // Products Data
+    const [Products, SetProducts] = useState([])
 
 
-    const [Loading, SetLoading] = useState(false)
+    // Loading 
+    const [Loading, SetLoading] = useState(true)
 
 
-    // Product Data
-    const [Product, SetProduct] = useState([])
-
-
+    // Navigate 
     const Navigate = useNavigate()
+
 
 
 
@@ -38,14 +39,14 @@ function GentsSlide() {
 
                 if (res.status >= 200 && res.status <= 300) {
 
-                    const result = res.data.filter((item) => item.category === "gents")
-
-                    SetProduct(result)
-
+                    const Result = res.data.slice(0, 6)
+                    SetProducts(Result)
+                    SetLoading(false)
                 }
                 else {
 
                     console.log(res);
+                    SetLoading(true)
 
 
                 }
@@ -68,83 +69,6 @@ function GentsSlide() {
 
 
     }, [])
-
-
-
-
-
-
-
-
-    // Handle Add To Cart
-    const HandleCart = async (product_id) => {
-
-
-        try {
-
-
-            const user = sessionStorage.getItem("user")
-            const token = sessionStorage.getItem("token")
-
-
-            if (user) {
-
-
-                const reqheader = {
-
-                    "Content-Type": "multipart/form-data",
-                    "Authorization": `Bearer ${token}`
-
-                }
-
-                const formdata = new FormData()
-                formdata.append("items", product_id)
-                formdata.append("user", user)
-
-
-                const res = await AddtoCart(formdata, reqheader)
-
-
-                if (res.status >= 200 && res.status <= 300) {
-
-
-                    toast.success("Product Added To Cart...!")
-
-                }
-                else {
-
-                    console.log(res)
-                    toast.warning("Product Alredy Exist in the Cart")
-
-                }
-
-
-            }
-            else {
-
-
-                toast.warning("Please Login First..!")
-
-
-                setTimeout(() => {
-
-                    Navigate('/auth')
-
-                }, 1000);
-
-
-            }
-
-        }
-        catch (err) {
-
-
-            console.log(err)
-
-        }
-
-
-    }
 
 
 
@@ -173,43 +97,36 @@ function GentsSlide() {
 
 
 
-
-
-
     return (
-
 
 
         <>
 
-            <section className='product-slide mt-5 pt-5' style={{ borderTop: '3px dotted #eee' }}>
 
 
-                <div className='container p-3'>
+            <section className='product-slide'>
 
-                    <div className='ms-3 Product-head'>
 
-                        <h2>Gents Latest</h2>
-                        <p>Walk in confidence with the Volant Footwear newest collection</p>
-
-                    </div>
+                <div className='container p-5 pt-0'>
 
 
                     <Carousel responsive={responsive}>
 
 
+
                         {
 
-                            Loading || !Product.length ?
+                            Loading ?
+
 
                                 Array.from({ length: 3 }).map((item) => (
 
 
-                                    <div className='me-3 mt-3'>
+                                    <div className='me-5 mt-3'>
 
-                                        <Skeleton sx={{ height: 190 }} animation="wave" variant="rectangular" />
+                                        <Skeleton sx={{ height: 190 }} width={'100%'} animation="wave" variant="rectangular" />
 
-                                        <Skeleton animation="wave" height={20} style={{ marginBottom: 6, marginTop: '1rem' }} />
+                                        <Skeleton animation="wave" height={20} width={'100%'} style={{ marginBottom: 6, marginTop: '1rem' }} />
 
                                         <Skeleton animation="wave" height={20} width="80%" />
 
@@ -221,10 +138,7 @@ function GentsSlide() {
                                 :
 
 
-                                Product.length > 0 &&
-
-
-                                Product.map((item) => (
+                                Products.map((item) => (
 
 
                                     <div>
@@ -240,7 +154,7 @@ function GentsSlide() {
                                                     <div className="el-wrapper">
 
 
-                                                        <div className="box-up"  onClick={() => { Navigate(`/pro/${item.id}`) }}>
+                                                        <div className="box-up" onClick={() => { Navigate(`/pro/${item.id}`) }}>
 
                                                             <img className="img-fluid img" loading='lazy' src={item.image} alt="img" style={{ height: '100%' }} />
 
@@ -249,7 +163,7 @@ function GentsSlide() {
                                                                 <div className="info-inner">
 
                                                                     <span className="p-name"></span>
-                                                                    <span className="p-company fw-bold">{item.name}</span>
+                                                                    <span className="p-company">{item.name}</span>
 
                                                                     <div className='p-company'>
 
@@ -261,38 +175,34 @@ function GentsSlide() {
 
                                                                     </div>
 
-
-
                                                                 </div>
+
 
 
                                                             </div>
 
                                                         </div>
 
-
-
-                                                        <div className="box-down" >
+                                                        <div className="box-down">
 
                                                             <div className="h-bg">
                                                                 <div className="h-bg-inner"></div>
                                                             </div>
 
-                                                            <a className="cart" onClick={()=>{HandleCart(item.id)}}>
+                                                            <a className="cart" onClick={() => { HandleCart(item.id) }}>
 
                                                                 <span className="price">Just ₹{item.offer_is_available ? item.offer_price : item.price}</span>
 
                                                                 <span className="add-to-cart" >
 
-                                                                    <span className="txt" >Add in cart</span>
+                                                                    <span className="txt" style={{ textAlign: 'end' }}>Add in cart</span>
+
 
                                                                 </span>
 
                                                             </a>
 
                                                         </div>
-
-
 
                                                     </div>
                                                 </div>
@@ -303,10 +213,14 @@ function GentsSlide() {
 
                                     </div>
 
+
+
                                 ))
 
-
                         }
+
+
+
 
 
                     </Carousel>
@@ -329,10 +243,28 @@ function GentsSlide() {
 
 
 
+
+
+
+
+
+
     )
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 }
 
-export default GentsSlide
+export default ProductSlide

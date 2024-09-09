@@ -54,7 +54,7 @@ export const GetCart = async (data) => {
 
     const params = new URLSearchParams({ user: data });
 
-    return await CommonApi("GET", `${base_url}/cart_view/?${params.toString()}`, "","")
+    return await CommonApi("GET", `${base_url}/cart_view/?${params.toString()}`, "", "")
 
 }
 
@@ -65,6 +65,22 @@ export const DeleteCart = async (data, user) => {
     const params = new URLSearchParams({ id: data, user: user })
 
     return CommonApi("DELETE", `${base_url}/cart_view/?${params.toString()}`, "", "")
+
+}
+
+
+// Get Quanity
+export const GetQuanity = async () => {
+
+    return CommonApi("GET", `${base_url}/sizes`)
+
+}
+
+
+// Get Color
+export const GetColor = async () => {
+
+    return CommonApi("GET", `${base_url}/colors/`, "","")
 
 }
 

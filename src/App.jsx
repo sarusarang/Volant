@@ -10,6 +10,8 @@ import ContactUs from "./Pages/ContactUs"
 import AboutUs from "./Pages/AboutUs"
 import Auth from "./Pages/Auth"
 import Cart from "./Pages/Cart"
+import SingleProduct from "./Pages/SingleProduct"
+
 
 
 function App() {
@@ -79,6 +81,8 @@ function App() {
         <Route path="/about" element={<AboutUs />}></Route>
 
         <Route path="/cart" element={<Cart />}></Route>
+
+        <Route path="/pro/:id" element={<SingleProduct />}></Route>
 
 
       </Routes>

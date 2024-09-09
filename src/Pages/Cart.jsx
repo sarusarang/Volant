@@ -342,7 +342,7 @@ function Cart() {
                         <div className="col-lg-3">
 
 
-                            <div className="card border-2 shadow" >
+                            <div className="card border-0 shadow" >
 
                                 <div className="card-body bg-white">
 
@@ -417,20 +417,21 @@ function Cart() {
 
 
 
+
+
                                     </div>
 
-                                    {/* <div className="mt-3">
+                                    <div className="mt-3">
 
 
+                                        <Link to={'/buy'}>
 
-                            <Link to={'/buy'}>
+                                            <a href="#" className="btn btn-success w-100 shadow-0  mt-2"> Check Out </a>
 
-                                <a href="#" className="btn btn-success w-100 shadow-0  mt-2"> Check Out </a>
-
-                            </Link>
+                                        </Link>
 
 
-                        </div> */}
+                                    </div>
 
 
                                 </div>
