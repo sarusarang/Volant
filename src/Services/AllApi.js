@@ -47,3 +47,25 @@ export const AddtoCart = async (data, header) => {
     return await CommonApi("POST", `${base_url}/user_cart/`, data, header)
 
 }
+
+
+// Get Cart
+export const GetCart = async (data) => {
+
+    const params = new URLSearchParams({ user: data });
+
+    return await CommonApi("GET", `${base_url}/cart_view/?${params.toString()}`, "","")
+
+}
+
+
+// Delete Cart Items
+export const DeleteCart = async (data, user) => {
+
+    const params = new URLSearchParams({ id: data, user: user })
+
+    return CommonApi("DELETE", `${base_url}/cart_view/?${params.toString()}`, "", "")
+
+}
+
+

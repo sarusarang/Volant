@@ -9,8 +9,7 @@ import { GoogleOAuthProvider } from '@react-oauth/google';
 createRoot(document.getElementById('root')).render(
 
 
-  <StrictMode>
-
+ 
 
     <BrowserRouter>
 
@@ -28,7 +27,7 @@ createRoot(document.getElementById('root')).render(
     </BrowserRouter>
 
 
-  </StrictMode>,
+  
 
 
 
