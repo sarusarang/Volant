@@ -30,3 +30,20 @@ export const GoogleAuth = async (data, header) => {
     return await CommonApi("POST", `${base_url}/api/google-auth/`, data, header)
 
 }
+
+
+//Get Product
+export const GetProducts = async (data, header) => {
+
+
+    return await CommonApi("GET", `${base_url}/products/`, data, header)
+
+}
+
+// Add to Cart 
+export const AddtoCart = async (data, header) => {
+
+
+    return await CommonApi("POST", `${base_url}/user_cart/`, data, header)
+
+}

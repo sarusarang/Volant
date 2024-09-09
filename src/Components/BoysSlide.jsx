@@ -1,9 +1,11 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Carousel from "react-multi-carousel"
 import "react-multi-carousel/lib/styles.css"
 import { Skeleton } from '@mui/material'
 import './ProductSlide.css'
+import { GetProducts ,AddtoCart} from '../Services/AllApi'
+import { toast } from 'sonner'
 
 
 
@@ -14,6 +16,59 @@ function BoysSlide() {
 
 
     const [Loading, SetLoading] = useState(false)
+
+
+    // Product Data
+    const [Product, SetProduct] = useState([])
+
+
+
+
+    useEffect(() => {
+
+
+
+        const GetAllProducts = async () => {
+
+
+            try {
+
+
+                const res = await GetProducts()
+
+                if (res.status >= 200 && res.status <= 300) {
+
+                    const result = res.data.filter((item) => item.category === "boys")
+
+                    SetProduct(result)
+
+                }
+                else {
+
+                    console.log(res);
+
+
+                }
+
+
+            }
+            catch (Err) {
+
+                console.log(Err);
+
+
+            }
+
+
+        }
+
+
+        GetAllProducts()
+
+
+
+    }, [])
+
 
 
     // Slider Responsive
@@ -40,6 +95,78 @@ function BoysSlide() {
 
 
 
+
+    // Handle Add To Cart
+    const HandleCart = async (product_id) => {
+
+
+        try {
+
+
+            const user = sessionStorage.getItem("user")
+            const token = sessionStorage.getItem("token")
+
+
+            if (user) {
+
+
+                const reqheader = {
+
+                    "Content-Type": "multipart/form-data",
+                    "Authorization": `Bearer ${token}`
+
+                }
+
+                const formdata = new FormData()
+                formdata.append("items", product_id)
+                formdata.append("user", user)
+
+
+                const res = await AddtoCart(formdata, reqheader)
+
+
+                if (res.status >= 200 && res.status <= 300) {
+
+
+                    toast.success("Product Added To Cart...!")
+
+                }
+                else {
+
+                    console.log(res)
+                    toast.warning("Product Alredy Exist in the Cart")
+
+                }
+
+
+            }
+            else {
+
+
+                toast.warning("Please Login First..!")
+
+
+                setTimeout(() => {
+
+                    Navigate('/auth')
+
+                }, 1000);
+
+
+            }
+
+        }
+        catch (err) {
+
+
+            console.log(err)
+
+        }
+
+
+    }
+
+
     return (
 
 
@@ -48,13 +175,12 @@ function BoysSlide() {
 
         <>
 
-
-            <section className='product-slide pt-5' >
+            <section className='product-slide mt-5 pt-5'>
 
 
                 <div className='container p-3'>
 
-                    <div className='ms-4 Product-head'>
+                    <div className='ms-3 Product-head'>
 
                         <h2>Boys & Girls, Kids</h2>
                         <p>Volant Footwear Keep your Kids always a step ahead</p>
@@ -65,407 +191,115 @@ function BoysSlide() {
                     <Carousel responsive={responsive}>
 
 
-                        {/* Array.from({ length: 3 }).map((item) => (
+                        {
+
+                            Loading || !Product.length ?
+
+                                Array.from({ length: 3 }).map((item) => (
 
 
-    <div className='me-3 mt-3'>
+                                    <div className='me-3 mt-3'>
 
-        <Skeleton sx={{ height: 190 }} animation="wave" variant="rectangular" />
+                                        <Skeleton sx={{ height: 190 }} animation="wave" variant="rectangular" />
 
-        <Skeleton animation="wave" height={20} style={{ marginBottom: 6, marginTop: '1rem' }} />
+                                        <Skeleton animation="wave" height={20} style={{ marginBottom: 6, marginTop: '1rem' }} />
 
-        <Skeleton animation="wave" height={20} width="80%" />
+                                        <Skeleton animation="wave" height={20} width="80%" />
 
-    </div>
+                                    </div>
 
-)) */}
-
-
+                                ))
 
 
+                                :
+
+
+                                Product.length > 0 &&
+
+
+                                Product.map((item) => (
+
+
+                                    <div>
+
+                                        <div className="container page-wrapper">
+
+                                            <div className="page-inner">
+
+
+                                                <div className="row">
+
+
+                                                    <div className="el-wrapper">
+
+
+                                                        <div className="box-up">
+
+                                                            <img className="img-fluid img" loading='lazy' src={item.image} alt="img" style={{ height: '100%' }} />
+
+                                                            <div className="img-info">
+
+                                                                <div className="info-inner">
+
+                                                                    <span className="p-name"></span>
+                                                                    <span className="p-company fw-bold">{item.name}</span>
+
+                                                                    <div className='p-company'>
+
+                                                                        <span class="fa fa-star " style={{ color: '#FFD43B' }}></span>
+                                                                        <span class="fa fa-star" style={{ color: '#FFD43B' }}></span>
+                                                                        <span class="fa fa-star" style={{ color: '#FFD43B' }}></span>
+                                                                        <span class="fa fa-star" style={{ color: '#FFD43B' }}></span>
+                                                                        <span class="fa fa-star fa-star-half-stroke" style={{ color: '#FFD43B' }}></span>
+
+                                                                    </div>
 
 
 
+                                                                </div>
 
 
-                        <div>
-
-                            <div className="container page-wrapper">
-
-                                <div className="page-inner">
-
-
-                                    <div className="row">
-
-
-                                        <div className="el-wrapper">
-
-
-                                            <div className="box-up">
-
-                                                <img className="img-fluid img" loading='lazy' src="https://server.mocs.in/media/product_images/1102_TAN_8-10_309.jpg" alt="img" style={{ height: '100%' }} />
-
-                                                <div className="img-info">
-
-                                                    <div className="info-inner">
-
-                                                        <span className="p-name"></span>
-                                                        <span className="p-company">FootWare</span>
-
-                                                        <div className='p-company'>
-
-                                                            <span class="fa fa-star " style={{ color: '#FFD43B' }}></span>
-                                                            <span class="fa fa-star" style={{ color: '#FFD43B' }}></span>
-                                                            <span class="fa fa-star" style={{ color: '#FFD43B' }}></span>
-                                                            <span class="fa fa-star" style={{ color: '#FFD43B' }}></span>
-                                                            <span class="fa fa-star fa-star-half-stroke" style={{ color: '#FFD43B' }}></span>
+                                                            </div>
 
                                                         </div>
 
-                                                    </div>
 
 
-                                                </div>
+                                                        <div className="box-down">
 
-                                            </div>
+                                                            <div className="h-bg">
+                                                                <div className="h-bg-inner"></div>
+                                                            </div>
 
+                                                            <a className="cart" onClick={()=>{HandleCart(item.id)}}>
 
+                                                                <span className="price">Just ₹{item.offer_is_available ? item.offer_price : item.price}</span>
 
-                                            <div className="box-down">
+                                                                <span className="add-to-cart" >
 
-                                                <div className="h-bg">
-                                                    <div className="h-bg-inner"></div>
-                                                </div>
+                                                                    <span className="txt" >Add in cart</span>
 
-                                                <a className="cart">
+                                                                </span>
 
-                                                    <span className="price">Just ₹1000</span>
-
-                                                    <span className="add-to-cart" >
-
-                                                        <span className="txt" >Add in cart</span>
-
-
-                                                    </span>
-
-                                                </a>
-
-                                            </div>
-
-
-
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-
-
-                        </div>
-
-
-
-
-
-                        <div>
-
-                            <div className="container page-wrapper">
-
-                                <div className="page-inner">
-
-
-                                    <div className="row">
-
-
-                                        <div className="el-wrapper">
-
-
-                                            <div className="box-up">
-
-                                                <img className="img-fluid img" loading='lazy' src="https://server.mocs.in/media/product_images/1102_TAN_8-10_309.jpg" alt="img" style={{ height: '100%' }} />
-
-                                                <div className="img-info">
-
-                                                    <div className="info-inner">
-
-                                                        <span className="p-name"></span>
-                                                        <span className="p-company">FootWare</span>
-
-                                                        <div className='p-company'>
-
-                                                            <span class="fa fa-star " style={{ color: '#FFD43B' }}></span>
-                                                            <span class="fa fa-star" style={{ color: '#FFD43B' }}></span>
-                                                            <span class="fa fa-star" style={{ color: '#FFD43B' }}></span>
-                                                            <span class="fa fa-star" style={{ color: '#FFD43B' }}></span>
-                                                            <span class="fa fa-star fa-star-half-stroke" style={{ color: '#FFD43B' }}></span>
+                                                            </a>
 
                                                         </div>
 
+
+
                                                     </div>
-
-
-
                                                 </div>
-
-                                            </div>
-
-                                            <div className="box-down">
-
-                                                <div className="h-bg">
-                                                    <div className="h-bg-inner"></div>
-                                                </div>
-
-                                                <a className="cart">
-
-                                                    <span className="price">Just ₹1000</span>
-
-                                                    <span className="add-to-cart" >
-
-                                                        <span className="txt" >Add in cart</span>
-
-
-                                                    </span>
-
-                                                </a>
-
                                             </div>
 
                                         </div>
+
+
                                     </div>
-                                </div>
 
-                            </div>
+                                ))
 
 
-                        </div>
-
-
-
-
-                        <div>
-
-                            <div className="container page-wrapper">
-
-                                <div className="page-inner">
-
-
-                                    <div className="row">
-
-
-                                        <div className="el-wrapper">
-
-
-                                            <div className="box-up">
-
-                                                <img className="img-fluid img" loading='lazy' src="https://server.mocs.in/media/product_images/1102_TAN_8-10_309.jpg" alt="img" style={{ height: '100%' }} />
-
-                                                <div className="img-info">
-
-                                                    <div className="info-inner">
-
-                                                        <span className="p-name"></span>
-                                                        <span className="p-company">FootWare</span>
-
-                                                        <div className='p-company'>
-
-                                                            <span class="fa fa-star " style={{ color: '#FFD43B' }}></span>
-                                                            <span class="fa fa-star" style={{ color: '#FFD43B' }}></span>
-                                                            <span class="fa fa-star" style={{ color: '#FFD43B' }}></span>
-                                                            <span class="fa fa-star" style={{ color: '#FFD43B' }}></span>
-                                                            <span class="fa fa-star fa-star-half-stroke" style={{ color: '#FFD43B' }}></span>
-
-                                                        </div>
-
-                                                    </div>
-
-
-
-                                                </div>
-
-                                            </div>
-
-                                            <div className="box-down">
-
-                                                <div className="h-bg">
-                                                    <div className="h-bg-inner"></div>
-                                                </div>
-
-                                                <a className="cart">
-
-                                                    <span className="price">Just ₹1000</span>
-
-                                                    <span className="add-to-cart" >
-
-                                                        <span className="txt" >Add in cart</span>
-
-
-                                                    </span>
-
-                                                </a>
-
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-
-
-                        </div>
-
-
-
-
-                        <div>
-
-                            <div className="container page-wrapper">
-
-                                <div className="page-inner">
-
-
-                                    <div className="row">
-
-
-                                        <div className="el-wrapper">
-
-
-                                            <div className="box-up">
-
-                                                <img className="img-fluid img" loading='lazy' src="https://server.mocs.in/media/product_images/1102_TAN_8-10_309.jpg" alt="img" style={{ height: '100%' }} />
-
-                                                <div className="img-info">
-
-                                                    <div className="info-inner">
-
-                                                        <span className="p-name"></span>
-                                                        <span className="p-company">FootWare</span>
-
-                                                        <div className='p-company'>
-
-                                                            <span class="fa fa-star " style={{ color: '#FFD43B' }}></span>
-                                                            <span class="fa fa-star" style={{ color: '#FFD43B' }}></span>
-                                                            <span class="fa fa-star" style={{ color: '#FFD43B' }}></span>
-                                                            <span class="fa fa-star" style={{ color: '#FFD43B' }}></span>
-                                                            <span class="fa fa-star fa-star-half-stroke" style={{ color: '#FFD43B' }}></span>
-
-                                                        </div>
-
-                                                    </div>
-
-
-
-                                                </div>
-
-                                            </div>
-
-                                            <div className="box-down">
-
-                                                <div className="h-bg">
-                                                    <div className="h-bg-inner"></div>
-                                                </div>
-
-                                                <a className="cart">
-
-                                                    <span className="price">Just ₹1000</span>
-
-                                                    <span className="add-to-cart" >
-
-                                                        <span className="txt" >Add in cart</span>
-
-
-                                                    </span>
-
-                                                </a>
-
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-
-
-                        </div>
-
-
-
-
-                        <div>
-
-                            <div className="container page-wrapper">
-
-                                <div className="page-inner">
-
-
-                                    <div className="row">
-
-
-                                        <div className="el-wrapper">
-
-
-                                            <div className="box-up">
-
-                                                <img className="img-fluid img" loading='lazy' src="https://server.mocs.in/media/product_images/1102_TAN_8-10_309.jpg" alt="img" style={{ height: '100%' }} />
-
-                                                <div className="img-info">
-
-                                                    <div className="info-inner">
-
-                                                        <span className="p-name"></span>
-                                                        <span className="p-company">FootWare</span>
-
-                                                        <div className='p-company'>
-
-                                                            <span class="fa fa-star " style={{ color: '#FFD43B' }}></span>
-                                                            <span class="fa fa-star" style={{ color: '#FFD43B' }}></span>
-                                                            <span class="fa fa-star" style={{ color: '#FFD43B' }}></span>
-                                                            <span class="fa fa-star" style={{ color: '#FFD43B' }}></span>
-                                                            <span class="fa fa-star fa-star-half-stroke" style={{ color: '#FFD43B' }}></span>
-
-                                                        </div>
-
-                                                    </div>
-
-
-
-                                                </div>
-
-                                            </div>
-
-                                            <div className="box-down">
-
-                                                <div className="h-bg">
-                                                    <div className="h-bg-inner"></div>
-                                                </div>
-
-                                                <a className="cart">
-
-                                                    <span className="price">Just ₹1000</span>
-
-                                                    <span className="add-to-cart" >
-
-                                                        <span className="txt" >Add in cart</span>
-
-
-                                                    </span>
-
-                                                </a>
-
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-
-
-                        </div>
-
-
-
+                        }
 
 
                     </Carousel>
@@ -477,10 +311,7 @@ function BoysSlide() {
             </section>
 
 
-
         </>
-
-
     )
 
 
