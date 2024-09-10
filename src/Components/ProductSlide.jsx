@@ -164,8 +164,9 @@ function ProductSlide() {
 
                                                                     <span className="p-name"></span>
                                                                     <span className="p-company">{item.name}</span>
+                                                                    <span className="p-company" style={{fontSize:'small'}}>{item.description}</span>
 
-                                                                    <div className='p-company'>
+                                                                    {/* <div className='p-company'>
 
                                                                         <span class="fa fa-star " style={{ color: '#FFD43B' }}></span>
                                                                         <span class="fa fa-star" style={{ color: '#FFD43B' }}></span>
@@ -173,7 +174,7 @@ function ProductSlide() {
                                                                         <span class="fa fa-star" style={{ color: '#FFD43B' }}></span>
                                                                         <span class="fa fa-star fa-star-half-stroke" style={{ color: '#FFD43B' }}></span>
 
-                                                                    </div>
+                                                                    </div> */}
 
                                                                 </div>
 
@@ -189,16 +190,16 @@ function ProductSlide() {
                                                                 <div className="h-bg-inner"></div>
                                                             </div>
 
-                                                            <a className="cart" onClick={() => { HandleCart(item.id) }}>
+                                                            <a className="cart">
 
                                                                 <span className="price">Just ₹{item.offer_is_available ? item.offer_price : item.price}</span>
 
-                                                                <span className="add-to-cart" >
+                                                                {/* <span className="add-to-cart" >
 
                                                                     <span className="txt" style={{ textAlign: 'end' }}>Add in cart</span>
 
 
-                                                                </span>
+                                                                </span> */}
 
                                                             </a>
 

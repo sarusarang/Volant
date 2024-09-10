@@ -80,8 +80,37 @@ export const GetQuanity = async () => {
 // Get Color
 export const GetColor = async () => {
 
-    return CommonApi("GET", `${base_url}/colors/`, "","")
+    return CommonApi("GET", `${base_url}/colors/`, "", "")
 
 }
 
+
+
+// Filter Size
+export const GetFilter = async (categ, size, color) => {
+
+    const params = new URLSearchParams({ category: categ, size: size, color: color })
+
+    return CommonApi("GET", `${base_url}/filter/?${params.toString()}`, "", "")
+
+}
+
+
+
+// Add to Address
+export const PostAddress = async (data, headers) => {
+
+    return CommonApi("POST", `${base_url}/user_address/`, data, headers)
+
+}
+
+
+// Get to Address
+export const GetAddress = async (data) => {
+
+    const params = new URLSearchParams({ user: data });
+
+    return CommonApi("GET", `${base_url}/user_address/?${params.toString()}`, "", "")
+
+}
 

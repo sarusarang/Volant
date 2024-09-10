@@ -4,8 +4,7 @@ import Carousel from "react-multi-carousel"
 import "react-multi-carousel/lib/styles.css"
 import { Skeleton } from '@mui/material'
 import './ProductSlide.css'
-import { GetProducts, AddtoCart } from '../Services/AllApi'
-import { toast } from 'sonner'
+import { GetProducts } from '../Services/AllApi'
 import { useNavigate } from 'react-router-dom'
 
 function LadiesSlide() {
@@ -94,75 +93,7 @@ function LadiesSlide() {
 
 
 
-    // Handle Add To Cart
-    const HandleCart = async (product_id) => {
-
-
-        try {
-
-
-            const user = sessionStorage.getItem("user")
-            const token = sessionStorage.getItem("token")
-
-
-            if (user) {
-
-
-                const reqheader = {
-
-                    "Content-Type": "multipart/form-data",
-                    "Authorization": `Bearer ${token}`
-
-                }
-
-                const formdata = new FormData()
-                formdata.append("items", product_id)
-                formdata.append("user", user)
-
-
-                const res = await AddtoCart(formdata, reqheader)
-
-
-                if (res.status >= 200 && res.status <= 300) {
-
-
-                    toast.success("Product Added To Cart...!")
-
-                }
-                else {
-
-                    console.log(res)
-                    toast.warning("Product Alredy Exist in the Cart")
-
-                }
-
-
-            }
-            else {
-
-
-                toast.warning("Please Login First..!")
-
-
-                setTimeout(() => {
-
-                    Navigate('/auth')
-
-                }, 1000);
-
-
-            }
-
-        }
-        catch (err) {
-
-
-            console.log(err)
-
-        }
-
-
-    }
+   
 
 
 
@@ -240,8 +171,9 @@ function LadiesSlide() {
 
                                                                     <span className="p-name"></span>
                                                                     <span className="p-company fw-bold">{item.name}</span>
+                                                                    <span className="p-company" style={{fontSize:'small'}}>{item.description}</span>
 
-                                                                    <div className='p-company'>
+                                                                    {/* <div className='p-company'>
 
                                                                         <span class="fa fa-star " style={{ color: '#FFD43B' }}></span>
                                                                         <span class="fa fa-star" style={{ color: '#FFD43B' }}></span>
@@ -249,7 +181,7 @@ function LadiesSlide() {
                                                                         <span class="fa fa-star" style={{ color: '#FFD43B' }}></span>
                                                                         <span class="fa fa-star fa-star-half-stroke" style={{ color: '#FFD43B' }}></span>
 
-                                                                    </div>
+                                                                    </div> */}
 
 
 
@@ -268,15 +200,15 @@ function LadiesSlide() {
                                                                 <div className="h-bg-inner"></div>
                                                             </div>
 
-                                                            <a className="cart" onClick={()=>{HandleCart(item.id)}}>
+                                                            <a className="cart">
 
                                                                 <span className="price">Just ₹{item.offer_is_available ? item.offer_price : item.price}</span>
 
-                                                                <span className="add-to-cart" >
+                                                                {/* <span className="add-to-cart" >
 
                                                                     <span className="txt" >Add in cart</span>
 
-                                                                </span>
+                                                                </span> */}
 
                                                             </a>
 

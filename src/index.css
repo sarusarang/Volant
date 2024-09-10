@@ -170,3 +170,57 @@ html {
 
 
 }
+
+
+
+
+.custom-select {
+    appearance: none;
+    /* Remove default arrow in Firefox */
+    -webkit-appearance: none;
+    /* Remove default arrow in Chrome, Safari, and Opera */
+    -moz-appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 16px;
+    padding-right: 30px;
+    /* Space for the custom arrow */
+    position: relative;
+}
+
+
+
+/* Hide scrollbar for Chrome, Safari, and Opera */
+select::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge */
+select {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+}
+
+/* Hide scrollbar for Firefox */
+select {
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+
+.hover-shdw {
+
+    transition: box-shadow 0.3s ease-in-out;
+
+}
+
+
+.hover-shdw:hover {
+
+
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+    /* Stronger shadow on hover */
+
+
+}

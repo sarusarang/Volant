@@ -11,6 +11,8 @@ import AboutUs from "./Pages/AboutUs"
 import Auth from "./Pages/Auth"
 import Cart from "./Pages/Cart"
 import SingleProduct from "./Pages/SingleProduct"
+import Filter from "./Pages/Filter"
+import Buy from "./Pages/Buy"
 
 
 
@@ -83,6 +85,10 @@ function App() {
         <Route path="/cart" element={<Cart />}></Route>
 
         <Route path="/pro/:id" element={<SingleProduct />}></Route>
+
+        <Route path="/fil" element={<Filter />}></Route>
+
+        <Route path="/Buy" element={<Buy />}></Route>
 
 
       </Routes>

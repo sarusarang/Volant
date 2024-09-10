@@ -6,6 +6,10 @@ import Container from 'react-bootstrap/Container'
 import { Link } from 'react-router-dom'
 import './Header.css'
 import { toast } from 'sonner'
+import { useDispatch } from 'react-redux'
+import { SetFilterData, SetSearchData} from '../Store/FilterSlice'
+
+
 
 function Header() {
 
@@ -15,6 +19,9 @@ function Header() {
     const [expanded, setExpanded] = useState(false)
 
 
+    const Dispatch = useDispatch()
+
+
     const handleNavClick = () => {
 
         setExpanded(false)
@@ -22,18 +29,18 @@ function Header() {
     }
 
 
-    const HandleLogout = ()=>{
+    const HandleLogout = () => {
 
         handleNavClick()
 
 
-        if(!sessionStorage.getItem("user")){
+        if (!sessionStorage.getItem("user")) {
 
 
             toast.warning("No User Found Please Login..!")
 
 
-        }else{
+        } else {
 
 
             sessionStorage.removeItem("user")
@@ -42,6 +49,18 @@ function Header() {
 
         }
 
+
+    }
+
+
+
+
+    // Filter data handle
+    const handleFilterData = (category,subcategory) => {
+
+        handleNavClick()
+
+        Dispatch(SetFilterData({category:category,subcategory:subcategory}))
 
     }
 
@@ -90,11 +109,12 @@ function Header() {
 
                                 <div className='dropdown-content'>
 
-                                    <Link to={'/auth'} className='drop-link d-block' onClick={handleNavClick}>Sandals</Link>
-                                    <Link to={'/'} className='drop-link d-block' onClick={handleNavClick}>Slipers & Flip Flops</Link>
-                                    <Link to={'/'} className='drop-link d-block' onClick={handleNavClick}>Flat Shoes</Link>
-                                    <Link to={'/'} className='drop-link d-block' onClick={handleNavClick}>Casual Shoes</Link>
-                                    <Link to={'/'} className='drop-link d-block' onClick={handleNavClick}>Special Collections</Link>
+                                    <Link to={'/fil'} className='drop-link d-block' onClick={()=>{handleFilterData("gents","sandals")}}>Sandals</Link>
+                                    <Link to={'/fil'} className='drop-link d-block' onClick={()=>{handleFilterData("gents","slipres")}}>Slipers</Link>
+                                    <Link to={'/fil'} className='drop-link d-block' onClick={()=>{handleFilterData("gents","flipflops")}}>Flip Flops</Link>
+                                    <Link to={'/fil'} className='drop-link d-block' onClick={()=>{handleFilterData("gents","flatshoes")}}>Flat Shoes</Link>
+                                    <Link to={'/fil'} className='drop-link d-block' onClick={()=>{handleFilterData("gents","casualshoes")}}>Casual Shoes</Link>
+                                    <Link to={'/fil'} className='drop-link d-block' onClick={()=>{handleFilterData("gents","specialcollections")}}>Special Collections</Link>
 
                                 </div>
 
@@ -107,11 +127,12 @@ function Header() {
 
                                 <div className='dropdown-content'>
 
-                                    <Link to={'/auth'} className='drop-link d-block' onClick={handleNavClick}>Sandals</Link>
-                                    <Link to={'/'} className='drop-link d-block' onClick={handleNavClick}>Slipers & Flip Flops</Link>
-                                    <Link to={'/'} className='drop-link d-block' onClick={handleNavClick}>Flat Shoes</Link>
-                                    <Link to={'/'} className='drop-link d-block' onClick={handleNavClick}>Casual Shoes</Link>
-                                    <Link to={'/'} className='drop-link d-block' onClick={handleNavClick}>Women Special</Link>
+                                    <Link to={'/fil'} className='drop-link d-block' onClick={()=>{handleFilterData("ladies","sandals")}}>Sandals</Link>
+                                    <Link to={'/fil'} className='drop-link d-block' onClick={()=>{handleFilterData("ladies","slipres")}}>Slipers</Link>
+                                    <Link to={'/fil'} className='drop-link d-block' onClick={()=>{handleFilterData("ladies","flipflops")}}>Flip Flops</Link>
+                                    <Link to={'/fil'} className='drop-link d-block' onClick={()=>{handleFilterData("ladies","flatshoes")}}>Flat Shoes</Link>
+                                    <Link to={'/fil'} className='drop-link d-block' onClick={()=>{handleFilterData("ladies","casualshoes")}}>Casual Shoes</Link>
+                                    <Link to={'/fil'} className='drop-link d-block' onClick={()=>{handleFilterData("ladies","specialcollections")}}>Women Special</Link>
 
                                 </div>
 
@@ -125,9 +146,9 @@ function Header() {
 
                                 <div className='dropdown-content'>
 
-                                    <Link to={'/auth'} className='drop-link d-block' onClick={handleNavClick}>Sandals</Link>
-                                    <Link to={'/'} className='drop-link d-block' onClick={handleNavClick}>Shoes</Link>
-                                    <Link to={'/'} className='drop-link d-block' onClick={handleNavClick}>School Edition</Link>
+                                    <Link to={'/fil'} className='drop-link d-block' onClick={()=>{handleFilterData("boys&girls","sandals")}}>Sandals</Link>
+                                    <Link to={'/fil'} className='drop-link d-block' onClick={()=>{handleFilterData("boys&girls","shoes")}}>Shoes</Link>
+                                    <Link to={'/fil'} className='drop-link d-block' onClick={()=>{handleFilterData("boys&girls","schooledition")}}>School Edition</Link>
 
 
                                 </div>
@@ -141,9 +162,8 @@ function Header() {
 
                                 <div className='dropdown-content'>
 
-                                    <Link to={'/auth'} className='drop-link d-block' onClick={handleNavClick}>Sandals</Link>
-                                    <Link to={'/'} className='drop-link d-block' onClick={handleNavClick}>Shoes</Link>
-
+                                    <Link to={'/fil'} className='drop-link d-block' onClick={()=>{handleFilterData("kids","sandals")}}>Sandals</Link>
+                                    <Link to={'/fil'} className='drop-link d-block' onClick={()=>{handleFilterData("kids","shoes")}}>Shoes</Link>
 
 
                                 </div>
@@ -183,7 +203,7 @@ function Header() {
 
                             <Link to={'/fil'} onClick={handleNavClick} className='search-none'>
 
-                                <input type="text" placeholder='Search' className='form-control w-100' />
+                                <input type="text" onChange={(e)=>{Dispatch(SetSearchData(e.target.value))}} placeholder='Search' className='form-control w-100' />
 
                             </Link>
 

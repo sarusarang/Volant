@@ -219,8 +219,6 @@ function SingleProduct() {
     }
 
 
-    console.log(PriceandQuanity, SelectedColor)
-
 
 
     // Handle Add To Cart
@@ -247,6 +245,8 @@ function SingleProduct() {
                 const formdata = new FormData()
                 formdata.append("items", product_id)
                 formdata.append("user", user)
+                formdata.append("color", SelectedColor.product_color)
+                formdata.append("size", PriceandQuanity.size)
 
 
                 const res = await AddtoCart(formdata, reqheader)

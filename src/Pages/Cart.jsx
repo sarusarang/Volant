@@ -54,6 +54,9 @@ function Cart() {
                     if (res.status >= 200 && res.status <= 300) {
 
 
+                        console.log(res.data);
+                    
+
                         const CartProducts = res.data.map(item => item.product)
 
                         SetCartItems(CartProducts)
@@ -98,6 +101,9 @@ function Cart() {
 
 
     }, [DeleteStatus]);
+
+
+
 
 
 
