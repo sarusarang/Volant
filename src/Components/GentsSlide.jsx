@@ -182,7 +182,7 @@ function GentsSlide() {
                                                                 <div className="info-inner">
 
                                                                     <span className="p-name"></span>
-                                                                    <span className="p-company fw-bold">{item.name}</span>
+                                                                    <span className="p-company fw-bold">{item.sub_cateory} {item.name}</span>
                                                                     <span className="p-company" style={{fontSize:'small'}}>{item.description}</span>
 
                                                                     {/* <div className='p-company'>

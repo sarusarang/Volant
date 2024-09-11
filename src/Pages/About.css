@@ -4,6 +4,29 @@
 
 }
 
+
+.About-hero {
+
+    background-image: url('/about-01.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    min-height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+.About-hero h2 {
+
+    font-weight: 700;
+    font-size: 3rem;
+
+}
+
+
 .about {
 
     padding: 3rem;
