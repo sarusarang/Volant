@@ -31,6 +31,29 @@ html {
 
 
 
+/* Filter */
+
+.fil-link{
+
+    text-decoration: none;
+    margin-bottom: 1.4rem;
+    border-bottom: 1px solid #eee;
+    font-weight: 500;
+    color: #2a2a2a;
+    transition: all  ease-in-out 0.2s;
+    cursor: pointer;
+
+}
+
+
+.fil-link:hover{
+
+    color: red !important;
+
+}
+
+
+
 /* Single Products */
 .btn-buynow {
 

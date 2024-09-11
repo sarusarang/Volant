@@ -445,7 +445,6 @@ function SingleProduct() {
 
                                                 <dd className="col-10 mb-4">{SelectedColor.product_color}</dd>
 
-
                                                 <SizeChart category={ProductData.category} />
 
                                             </div>
