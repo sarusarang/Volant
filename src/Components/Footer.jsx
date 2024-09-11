@@ -163,11 +163,11 @@ function Footer() {
 
           <div className='d-flex justify-content-center'>
 
-            <p><Link className='nav-link foot-link me-3' to={'/pirvacy'}> Privacy & Policy</Link></p>
+            <p><Link className='nav-link foot-link me-3' to={'/policy'}> Privacy & Policy</Link></p>
 
             <p><Link className='nav-link foot-link me-3' to={'/terms'}>Terms & Conditions</Link></p>
 
-            <p><Link className='nav-link foot-link me-3' to={'/refund'}>Refund Policy</Link></p>
+           
 
           </div>
 
@@ -180,20 +180,20 @@ function Footer() {
         {/* Socail Media Links */}
         <section class="d-flex justify-content-center pb-3 ">
 
-          <a data-mdb-ripple-init class="btn m-1" href="https://www.facebook.com/happycouplesolution/" role="button" target='_blank' style={{ borderRadius: '5rem' }}
+          <a data-mdb-ripple-init class="btn m-1" href="https://www.facebook.com/volantfootwears" role="button" target='_blank' style={{ borderRadius: '5rem' }}
           ><i class="fab fa-facebook-f text-white fa-lg"></i
           ></a>
 
 
-          <a data-mdb-ripple-init class="btn m-1" href="https://x.com/happycouplesolu" role="button" target='_blank' style={{ borderRadius: '5rem' }}
+          <a data-mdb-ripple-init class="btn m-1" href="https://x.com/volantfootwears" role="button" target='_blank' style={{ borderRadius: '5rem' }}
           ><i class="fa-brands fa-x-twitter text-white fa-lg"></i></a>
 
-          <a data-mdb-ripple-init class="btn  m-1" href="https://www.instagram.com/happycouplesolution/" role="button" target='_blank' style={{ borderRadius: '5rem' }}
+          <a data-mdb-ripple-init class="btn  m-1" href="https://www.instagram.com/volantfootwears/" role="button" target='_blank' style={{ borderRadius: '5rem' }}
           ><i class="fab fa-instagram text-white fa-lg"></i
           ></a>
 
 
-          <a data-mdb-ripple-init class="btn m-1" href="https://www.youtube.com/@happycouplesolution" role="button" target='_blank' style={{ borderRadius: '5rem' }}
+          <a data-mdb-ripple-init class="btn m-1" href="https://www.youtube.com/channel/UCWa6KAsmNRNhB5nE8eLfCLg" role="button" target='_blank' style={{ borderRadius: '5rem' }}
           ><i class="fa-brands fa-youtube text-white fa-lg"></i></a>
 
 

@@ -236,7 +236,7 @@ function Buy() {
 
                             <h4>Address</h4>
 
-                            <div className="card" style={{ padding: '1rem' }}>
+                            <div className="card text-dark" style={{ padding: '1rem' }}>
 
 
 

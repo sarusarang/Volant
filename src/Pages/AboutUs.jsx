@@ -51,13 +51,13 @@ function AboutUs() {
 
             <div className='about-social pt-4'>
 
-              <a href="https://www.facebook.com/happycouplesolution/" target='_blank' className='btn-about btn'><i class="fa-brands fa-facebook-f"></i></a>
+              <a href="https://www.facebook.com/volantfootwears" target='_blank' className='btn-about btn'><i class="fa-brands fa-facebook-f"></i></a>
 
-              <a href="https://www.instagram.com/happycouplesolution/" target='_blank' className='btn-about btn'><i class="fa-brands fa-instagram"></i></a>
+              <a href="https://www.instagram.com/volantfootwears/" target='_blank' className='btn-about btn'><i class="fa-brands fa-instagram"></i></a>
 
-              <a href="https://x.com/happycouplesolu" className='btn-about btn' target='_blank'><i class="fa-brands fa-x-twitter"></i></a>
+              <a href="https://x.com/volantfootwears" className='btn-about btn' target='_blank'><i class="fa-brands fa-x-twitter"></i></a>
 
-              <a href="https://in.pinterest.com/happycouplesolution/" target='_blank' className='btn-about btn'><i class="fa-brands fa-pinterest"></i></a>
+              <a href="" target='_blank' className='btn-about btn'><i class="fa-brands fa-pinterest"></i></a>
 
             </div>
 

@@ -2,8 +2,8 @@ import React from 'react'
 import { useState } from 'react'
 import './Auth.css'
 import { toast } from 'sonner'
-import { Login, Register,GoogleAuth } from '../Services/AllApi'
-import { useNavigate } from 'react-router-dom'
+import { Login, Register, GoogleAuth } from '../Services/AllApi'
+import { Link, useNavigate } from 'react-router-dom'
 import { useGoogleLogin } from '@react-oauth/google';
 
 function Auth() {
@@ -282,7 +282,12 @@ function Auth() {
 
                     <div className='login-logo'>
 
-                        <img src="/volantlogo-01.png" loading='lazy' className='img-fluid' alt="img" />
+                        <Link to={'/'}>
+
+                            <img src="/volantlogo-01.png" loading='lazy' className='img-fluid' alt="img" />
+
+                        </Link>
+
 
                     </div>
 

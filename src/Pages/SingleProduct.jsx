@@ -6,6 +6,7 @@ import { toast } from 'sonner'
 import ProductSlide from '../Components/ProductSlide'
 import { MDBTabs, MDBTabsItem, MDBTabsLink } from "mdb-react-ui-kit"
 import ProductSkelton from '../Components/ProductSkelton'
+import SizeChart from '../Components/SizeChart'
 
 
 function SingleProduct() {
@@ -294,6 +295,10 @@ function SingleProduct() {
 
 
 
+   
+    
+
+
     return (
 
 
@@ -436,9 +441,12 @@ function SingleProduct() {
 
                                             <div className="row">
 
-                                                <dt className="col-3">Color:</dt>
+                                                <dt className="col-2">Color:</dt>
 
-                                                <dd className="col-9">{SelectedColor.product_color}</dd>
+                                                <dd className="col-10 mb-4">{SelectedColor.product_color}</dd>
+
+
+                                                <SizeChart category={ProductData.category} />
 
                                             </div>
 
@@ -455,7 +463,16 @@ function SingleProduct() {
                                                 <div className="d-flex flex-column">
 
 
-                                                    <label className="mb-2 fw-bold" style={{ fontSize: '1.3rem' }}>Size</label>
+                                                    <div className='d-flex align-items-center'>
+
+
+                                                        <label className="mb-2 fw-bold" style={{ fontSize: '1.3rem' }}>Size</label>
+
+                                                    
+                                                    </div>
+
+
+
 
                                                     <div className='row'>
 
@@ -470,6 +487,11 @@ function SingleProduct() {
                                                             ))
 
                                                         }
+
+
+
+
+
 
 
                                                     </div>
