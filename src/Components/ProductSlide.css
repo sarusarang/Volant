@@ -329,3 +329,148 @@ body {
     margin-bottom: 0rem;
 
 }
+
+
+
+
+
+
+
+
+
+.product-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+}
+
+.item {
+    position: relative;
+    width: 500px;
+    background-color: #fff;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    text-align: center;
+}
+
+
+.thumb {
+    position: relative;
+    width: 100%;
+    height: 300px;
+}
+
+.thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hover-content {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translate(-50%, 20px); /* Start below the normal position */
+    display: flex;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Animate both opacity and position */
+}
+
+.item:hover .hover-content {
+    opacity: 1;
+    transform: translate(-50%, 0); /* Move to the original position */
+}
+
+.hover-content ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 10px;
+}
+
+.hover-content ul li {
+    background-color: #fff;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s;
+}
+
+.hover-content ul li:hover {
+    background-color: #232323;
+}
+
+.hover-content ul li a {
+    color: #232323;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+.hover-content ul li:hover a {
+    color: #fff;
+}
+
+.down-content {
+    padding: 0 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.down-content .left {
+    text-align: start;
+}
+
+.down-content h4 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.down-content .price {
+    font-size: 18px;
+    color: #a1a1a1;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.down-content .stars {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.down-content .stars i {
+    color: #f1c40f;
+    margin-right: 3px;
+}
+
+.down-content .stars i:last-child {
+    margin-right: 0;
+}
+
+.down-content span.old-price {
+    text-decoration: line-through;
+    color: #aaa;
+    margin-left: 10px;
+    font-size: 14px;
+}
+
+.stars{
+
+
+    margin-top: -1.5rem;
+
+}
+
+
+.left h4{
+
+    font-size: 1.3rem;
+
+}

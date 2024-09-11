@@ -148,76 +148,41 @@ function LadiesSlide() {
                                 Product.map((item) => (
 
 
-                                    <div>
+                                    <div class="product-container">
 
-                                        <div className="container page-wrapper">
+                                    <div class="item">
 
-                                            <div className="page-inner">
+                                        <div class="thumb">
 
+                                            <img src={item.image} alt="img" onClick={() => { Navigate(`/pro/${item.id}`) }}  style={{cursor:'pointer'}}  />
 
-                                                <div className="row">
+                                            <div class="hover-content">
 
+                                                <ul>
+                                                    <li><a onClick={() => { Navigate(`/pro/${item.id}`) }}><i class="fa fa-eye" ></i></a></li>
+                                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                                    {/* <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li> */}
+                                                </ul>
 
-                                                    <div className="el-wrapper">
+                                            </div>
 
+                                        </div>
 
-                                                        <div className="box-up"  onClick={() => { Navigate(`/pro/${item.id}`) }}>
+                                        <div class="down-content">
 
-                                                            <img className="img-fluid img" loading='lazy' src={item.image} alt="img" style={{ height: '100%' }} />
+                                            <div class="left">
 
-                                                            <div className="img-info">
+                                                <h4 className='fw-bold'>{item.sub_cateory} {item.name}</h4>
+                                                <div class="price">₹519</div>
 
-                                                                <div className="info-inner">
+                                            </div>
 
-                                                                    <span className="p-name"></span>
-                                                                    <span className="p-company fw-bold">{item.sub_cateory} {item.name}</span>
-                                                                    <span className="p-company" style={{fontSize:'small'}}>{item.description}</span>
-
-                                                                    {/* <div className='p-company'>
-
-                                                                        <span class="fa fa-star " style={{ color: '#FFD43B' }}></span>
-                                                                        <span class="fa fa-star" style={{ color: '#FFD43B' }}></span>
-                                                                        <span class="fa fa-star" style={{ color: '#FFD43B' }}></span>
-                                                                        <span class="fa fa-star" style={{ color: '#FFD43B' }}></span>
-                                                                        <span class="fa fa-star fa-star-half-stroke" style={{ color: '#FFD43B' }}></span>
-
-                                                                    </div> */}
-
-
-
-                                                                </div>
-
-
-                                                            </div>
-
-                                                        </div>
-
-
-
-                                                        <div className="box-down">
-
-                                                            <div className="h-bg">
-                                                                <div className="h-bg-inner"></div>
-                                                            </div>
-
-                                                            <a className="cart">
-
-                                                                <span className="price">Just ₹{item.offer_is_available ? item.offer_price : item.price}</span>
-
-                                                                {/* <span className="add-to-cart" >
-
-                                                                    <span className="txt" >Add in cart</span>
-
-                                                                </span> */}
-
-                                                            </a>
-
-                                                        </div>
-
-
-
-                                                    </div>
-                                                </div>
+                                            <div class="stars">
+                                                <i class="fa fa-star text-dark"></i>
+                                                <i class="fa fa-star text-dark"></i>
+                                                <i class="fa fa-star text-dark"></i>
+                                                <i class="fa fa-star text-dark"></i>
+                                                <i class="fa fa-star text-dark"></i>
                                             </div>
 
                                         </div>
@@ -225,6 +190,9 @@ function LadiesSlide() {
 
                                     </div>
 
+                                </div>
+
+                                
                                 ))
 
 
