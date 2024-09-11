@@ -199,7 +199,7 @@ function Footer() {
 
 
 
-          <a data-mdb-ripple-init class="btn  m-1" href="https://in.pinterest.com/happycouplesolution/" role="button" target='_blank' style={{ borderRadius: '5rem' }}
+          <a data-mdb-ripple-init class="btn  m-1" href="https://in.pinterest.com/volantfootwears/" role="button" target='_blank' style={{ borderRadius: '5rem' }}
           ><i class="fa-brands fa-pinterest text-white fa-lg"></i></a>
 
 

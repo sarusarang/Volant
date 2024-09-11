@@ -57,7 +57,7 @@ function AboutUs() {
 
               <a href="https://x.com/volantfootwears" className='btn-about btn' target='_blank'><i class="fa-brands fa-x-twitter"></i></a>
 
-              <a href="" target='_blank' className='btn-about btn'><i class="fa-brands fa-pinterest"></i></a>
+              <a href="https://in.pinterest.com/volantfootwears/" target='_blank' className='btn-about btn'><i class="fa-brands fa-pinterest"></i></a>
 
             </div>
 
