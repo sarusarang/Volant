@@ -31,6 +31,14 @@ html {
 
 
 
+.btn-clear{
+
+    background: linear-gradient(to right, #891812, #E42227);
+
+}
+
+
+
 /* Filter */
 
 .fil-link{
@@ -59,11 +67,11 @@ html {
 
     background-color: rgb(0, 0, 0) !important;
     border: 1px solid #2a2a2a !important;
-    padding: 1rem 3rem 1rem 3rem !important;
+    padding: 1rem 2rem 1rem 2rem !important;
     font-size: large !important;
     font-weight: 700 !important;
     color: #fff !important;
-    border-radius: 0.8rem !important;
+    border-radius: 0.3rem !important;
 
 }
 
@@ -78,7 +86,7 @@ html {
     font-size: large !important;
     font-weight: 700 !important;
     color: rgb(0, 0, 0) !important;
-    border-radius: 0.8rem !important;
+    border-radius: 0.3rem !important;
 
 }
 
@@ -130,14 +138,15 @@ html {
 
 
 .btn_nos {
-    width: 90px;
-    height: 40px;
+
+    width: 50px;
+    height: 50px;
     margin-right: 1rem;
     margin-top: 1rem;
     border: 1px solid #000 !important;
     font-weight: 500;
     background-color: white;
-    border-radius: 5px;
+    border-radius: 60%;
     transition: all 0.3s ease-out;
 
 }

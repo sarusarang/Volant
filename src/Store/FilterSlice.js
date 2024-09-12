@@ -23,6 +23,8 @@ const FilterSlice = createSlice({
         SetFilterData: (state, action) => {
 
             state.Filter = action.payload 
+            console.log(action.payload);
+            
             
         },
 

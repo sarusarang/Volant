@@ -45,8 +45,7 @@ function SingleProduct() {
     const [SelectedColor, SetSelectedColor] = useState({})
 
 
-    // To handle Spec Tabs
-    const [activeItem, setActiveItem] = useState('tab1')
+
 
 
 
@@ -207,21 +206,6 @@ function SingleProduct() {
 
 
 
-    // To handle Spec Tabs
-    const handleTabClick = (value) => {
-
-        if (value === activeItem) {
-
-            return;
-        }
-
-        setActiveItem(value);
-
-    }
-
-
-
-
     // Handle Add To Cart
     const HandleCart = async (product_id) => {
 
@@ -295,8 +279,8 @@ function SingleProduct() {
 
 
 
-   
-    
+
+
 
 
     return (
@@ -316,7 +300,7 @@ function SingleProduct() {
                     < section >
 
 
-                        <section className="py-5">
+                        <section className="py-5 mb-5">
 
 
                             <div className="container">
@@ -339,32 +323,6 @@ function SingleProduct() {
 
 
                                             </a>
-
-                                        </div>
-
-
-
-
-
-                                        <div className="d-flex justify-content-center mb-3">
-
-                                            {
-
-                                                AllColors &&
-
-                                                AllColors.map((item) => (
-
-
-                                                    <a style={{ cursor: 'pointer' }} onClick={() => { SetSelectedColor(item) }} data-fslightbox="mygalley" className="border mx-1 rounded-2 item-thumb" target="_blank" data-type="image">
-                                                        <img loading='lazy' width="60" height="60" className="rounded-2" src={item.image} />
-                                                    </a>
-
-
-                                                ))
-
-
-                                            }
-
 
                                         </div>
 
@@ -437,6 +395,29 @@ function SingleProduct() {
                                             </p>
 
 
+                                            <div className="d-flex justify-content-start mb-4">
+
+                                                {
+
+                                                    AllColors &&
+
+                                                    AllColors.map((item) => (
+
+
+                                                        <a style={{ cursor: 'pointer' }} onClick={() => { SetSelectedColor(item) }} data-fslightbox="mygalley" className="border mx-1 rounded-2 item-thumb" target="_blank" data-type="image">
+                                                            <img loading='lazy' width="60" height="60" className="rounded-2" src={item.image} />
+                                                        </a>
+
+
+                                                    ))
+
+
+                                                }
+
+
+                                            </div>
+
+
 
 
                                             <div className="row">
@@ -467,7 +448,7 @@ function SingleProduct() {
 
                                                         <label className="mb-2 fw-bold" style={{ fontSize: '1.3rem' }}>Size</label>
 
-                                                    
+
                                                     </div>
 
 
@@ -488,11 +469,6 @@ function SingleProduct() {
                                                         }
 
 
-
-
-
-
-
                                                     </div>
 
 
@@ -504,8 +480,8 @@ function SingleProduct() {
 
 
                                             {/* Buy Now */}
-                                            <a className="btn btn-buynow shadow me-3 mt-3" onClick={() => { Navigate('/buy') }}> Buy now </a>
-                                            <a className="btn btn-addcart shadow mt-3" onClick={() => { HandleCart(ProductData.id) }}> <i className="me-1 fa fa-shopping-basket"></i> Add to cart </a>
+                                            <a className="btn btn-buynow shadow me-3" onClick={() => { Navigate('/buy') }}> Buy now </a>
+                                            <a className="btn btn-addcart shadow" onClick={() => { HandleCart(ProductData.id) }}> <i className="me-1 fa fa-shopping-basket"></i> Add to cart </a>
 
 
 
@@ -524,221 +500,11 @@ function SingleProduct() {
 
 
 
-                        <section className="bg-light border-top py-4 pb-5 mb-5 pt-5" style={{ borderBottom: '3px dotted #eee' }}>
-
-
-                            <div className="container">
-
-
-                                <div className="row gx-4">
-
-                                    {/* SPECS */}
-                                    <div className="col-lg-12 mb-4">
-
-                                        <div className='border rounded-2 shadow px-3 py-2 bg-white'>
-
-                                            <MDBTabs pills className="mb-3 p-3">
-
-                                                <MDBTabsItem>
-                                                    <MDBTabsLink onClick={() => handleTabClick('tab1')} active={activeItem === 'tab1'} className=' text-dark me-3' style={{ border: '1px solid #000' }} >
-                                                        Discription
-                                                    </MDBTabsLink>
-                                                </MDBTabsItem>
-
-                                                {/* <MDBTabsItem>
-                            <MDBTabsLink onClick={() => handleTabClick('tab2')} active={activeItem === 'tab2'} className=' text-dark me-3' style={{ border: '1px solid #000' }}>
-                              Product Details
-                            </MDBTabsLink>
-                          </MDBTabsItem> */}
-
-
-                                                <MDBTabsItem>
-                                                    <MDBTabsLink onClick={() => handleTabClick('tab3')} active={activeItem === 'tab3'} className=' text-dark me-3' style={{ border: '1px solid #000' }}>
-                                                        Customer Reviews
-                                                    </MDBTabsLink>
-                                                </MDBTabsItem>
-
-
-                                                {/* <MDBTabsItem>
-                            <MDBTabsLink onClick={() => handleTabClick('tab4')} active={activeItem === 'tab4'} className=' text-dark me-3' style={{ border: '1px solid #000' }}>
-                              FAQs
-                            </MDBTabsLink>
-                          </MDBTabsItem> */}
-
-
-                                                <MDBTabsItem>
-                                                    <MDBTabsLink onClick={() => handleTabClick('tab5')} active={activeItem === 'tab5'} className=' text-dark' style={{ border: '1px solid #000' }}>
-                                                        Shipping & Return
-                                                    </MDBTabsLink>
-                                                </MDBTabsItem>
-
-
-                                            </MDBTabs>
-
-
-
-
-                                            {/* Discription */}
-                                            {
-
-                                                activeItem == "tab1" &&
-
-                                                <div className='key-benfits pb-5'>
-
-                                                    <p style={{ textAlign: 'justify' }}>{ProductData.description}</p>
-
-                                                </div>
-
-                                            }
-
-
-                                            {/* Product Details*/}
-                                            {/* {
-  
-                          activeItem == "tab2" &&
-  
-                          <div className='howto-use pb-5 ps-3 pe-3'>
-  
-                            <ul>
-  
-                              <li>ansmsannsa</li>
-                              <li>ansmsannsa</li>
-                              <li>ansmsannsa</li>
-  
-  
-                            </ul>
-  
-                          </div>
-  
-                        } */}
-
-
-
-
-
-
-                                            {/* Review */}
-                                            {
-
-                                                activeItem == "tab3" &&
-
-                                                <div className='pb-5 ps-3 pe-3'>
-
-
-                                                    <div className='mb-4 customer-review'>
-
-                                                        <span class="fa fa-star " style={{ color: '#FFD43B' }}></span>
-                                                        <span class="fa fa-star" style={{ color: '#FFD43B' }}></span>
-                                                        <span class="fa fa-star" style={{ color: '#FFD43B' }}></span>
-                                                        <span class="fa fa-star" style={{ color: '#FFD43B' }}></span>
-                                                        <span class="fa fa-star fa-star-half-stroke" style={{ color: '#FFD43B' }}></span>
-
-                                                        <p>started using Lygin M before moving to stronger medications. Not only did my condition improve,
-                                                            but I also feel more energetic throughout the day!" - Jason M.</p>
-
-                                                    </div>
-
-
-
-                                                    <div className='mb-4 customer-review'>
-
-                                                        <span class="fa fa-star " style={{ color: '#FFD43B' }}></span>
-                                                        <span class="fa fa-star" style={{ color: '#FFD43B' }}></span>
-                                                        <span class="fa fa-star" style={{ color: '#FFD43B' }}></span>
-                                                        <span class="fa fa-star" style={{ color: '#FFD43B' }}></span>
-                                                        <span class="fa fa-star fa-star-half-stroke" style={{ color: '#FFD43B' }}></span>
-
-                                                        <p>Great product with natural ingredients. I appreciate the holistic approach to treating ED." - Kevin T.</p>
-
-                                                    </div>
-
-
-
-                                                    <div className='mb-4 customer-review'>
-
-                                                        <span class="fa fa-star " style={{ color: '#FFD43B' }}></span>
-                                                        <span class="fa fa-star" style={{ color: '#FFD43B' }}></span>
-                                                        <span class="fa fa-star" style={{ color: '#FFD43B' }}></span>
-                                                        <span class="fa fa-star" style={{ color: '#FFD43B' }}></span>
-                                                        <span class="fa fa-star fa-star-half-stroke" style={{ color: '#FFD43B' }}></span>
-
-                                                        <p>Noticed significant improvements in both my sexual health and overall well-being. Highly recommend Lygin M!" - Sam D.</p>
-
-                                                    </div>
-
-
-                                                </div>
-
-                                            }
-
-
-
-                                            {/* Faq */}
-                                            {/* {
-  
-                          activeItem == "tab4" &&
-  
-                          <div className='FAQ pb-5 ps-3 pe-3'>
-  
-                            <ul>
-  
-                              <li>
-  
-                                <p className='mt-2'>Hello hi</p>
-  
-                              </li>
-  
-                            </ul>
-  
-                          </div>
-  
-                        } */}
-
-
-
-
-                                            {/* Shipping & Return */}
-                                            {
-
-                                                activeItem == "tab5" &&
-
-                                                <div className='FAQ pb-5 ps-3 pe-3'>
-
-                                                    <p className='fw-bold'>Shipping</p>
-                                                    <p>Free Shipping on all Orders in India</p>
-
-                                                    <p className='fw-bold'>Estimated Delivery</p>
-                                                    <p>4-5 working days</p>
-
-                                                    <p className='fw-bold'>Return & Exchange</p>
-                                                    <p>Unworn  shoes can be exchanged or returned for a full refund within 7 days</p>
-
-                                                </div>
-                                            }
-
-
-
-                                        </div>
-
-
-                                    </div>
-
-
-
-
-
-                                </div>
-
-
-                            </div>
-
-
-                        </section>
 
 
 
                         {/* Products */}
-                        <section className='pb-5'>
+                        <section className='pb-5 pt-5 mt-5' style={{ borderTop: '3px dotted #eee' }}>
 
 
                             <div>
