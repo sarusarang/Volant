@@ -40,9 +40,12 @@ function BoysSlide() {
 
                 if (res.status >= 200 && res.status <= 300) {
 
-                    const result = res.data.filter((item) => item.category === "boys")
+                    const result = res.data.filter((item) => item.category === "boys&girls")
 
                     SetProduct(result)
+                    
+                    console.log(result);
+                    
 
                 }
                 else {

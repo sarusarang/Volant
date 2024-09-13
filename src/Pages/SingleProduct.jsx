@@ -4,7 +4,6 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { GetProducts, AddtoCart, GetQuanity, GetColor } from '../Services/AllApi'
 import { toast } from 'sonner'
 import ProductSlide from '../Components/ProductSlide'
-import { MDBTabs, MDBTabsItem, MDBTabsLink } from "mdb-react-ui-kit"
 import ProductSkelton from '../Components/ProductSkelton'
 import SizeChart from '../Components/SizeChart'
 
@@ -316,11 +315,7 @@ function SingleProduct() {
 
                                             <a data-fslightbox="mygalley" className="rounded-4" target="_blank" data-type="image">
 
-
-
                                                 <img loading='lazy' style={{ maxWidth: '100%', maxHeight: '100vh', margin: 'auto' }} className="rounded-4 fit" src={SelectedColor.image} />
-
-
 
                                             </a>
 
@@ -332,7 +327,7 @@ function SingleProduct() {
 
                                     <main className="col-lg-6">
 
-                                        <div className="ps-lg-3">
+                                        <div className="ps-lg-3 p-3">
 
                                             {/* Tittle */}
                                             <h3 className="title text-dark mb-0 fw-bold">
@@ -454,7 +449,7 @@ function SingleProduct() {
 
 
 
-                                                    <div className='row'>
+                                                    <div className='row btn-size'>
 
                                                         {
 
@@ -462,7 +457,7 @@ function SingleProduct() {
 
                                                             AllQuanity.map((item) => (
 
-                                                                <button className={`btn_nos me-3 mt-2 col-md-1 ${PriceandQuanity.size === item.size ? 'active' : ''}`} onClick={() => { SetPriceandQuanity(item) }}>{item.size}</button>
+                                                                <button className={`btn_nos mt-2 col-1 ${PriceandQuanity.size === item.size ? 'active' : ''}`} onClick={() => { SetPriceandQuanity(item) }}>{item.size}</button>
 
                                                             ))
 
@@ -479,9 +474,17 @@ function SingleProduct() {
 
 
 
-                                            {/* Buy Now */}
-                                            <a className="btn btn-buynow shadow me-3" onClick={() => { Navigate('/buy') }}> Buy now </a>
-                                            <a className="btn btn-addcart shadow" onClick={() => { HandleCart(ProductData.id) }}> <i className="me-1 fa fa-shopping-basket"></i> Add to cart </a>
+                                            <div className='row sec-buy'>
+
+                                                {/* Buy Now */}
+                                                <a className="btn btn-buynow shadow me-3 col-md-5" onClick={() => { Navigate('/buy') }}> Buy now </a>
+                                                <a className="btn btn-addcart shadow col-md-6" onClick={() => { HandleCart(ProductData.id) }}> <i className="me-1 fa fa-shopping-basket"></i> Add to cart </a>
+
+                                            </div>
+
+
+
+
 
 
 
