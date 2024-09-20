@@ -70,18 +70,13 @@ function Filter() {
 
                     const Result = res.data.filter((item) => {
 
-                        const price = parseFloat(item.price)
-
-                        console.log(price);
-
-
+                        
                         return (
 
                             (!Filter || item.category === Filter.category && item.sub_cateory == Filter.subcategory) &&
                             (!Data.category || item.category === Data.category) &&
                             (!Data.type || item.sub_cateory === Data.type)
-                            // (price >= minPrice && price <= maxPrice)
-
+                           
                         )
 
                     })
@@ -298,6 +293,7 @@ function Filter() {
                                         </Accordion.Header>
 
                                         <Accordion.Body>
+                                            
                                             <div className="form-check">
                                                 <input
                                                     checked={Data.category === "gents"}
@@ -309,6 +305,7 @@ function Filter() {
                                                 />
                                                 <label className="form-check-label" htmlFor="gents">Gents</label>
                                             </div>
+
                                             <div className="form-check">
                                                 <input
                                                     checked={Data.category === "ladies"}
@@ -320,6 +317,7 @@ function Filter() {
                                                 />
                                                 <label className="form-check-label" htmlFor="ladies">Ladie's</label>
                                             </div>
+
                                             <div className="form-check">
                                                 <input
                                                     checked={Data.category === "boys&girls"}
@@ -331,6 +329,7 @@ function Filter() {
                                                 />
                                                 <label className="form-check-label" htmlFor="boys&girls">Boys & Girls</label>
                                             </div>
+
                                             <div className="form-check">
                                                 <input
                                                     checked={Data.category === "kids"}
@@ -342,6 +341,7 @@ function Filter() {
                                                 />
                                                 <label className="form-check-label" htmlFor="kids">Kids</label>
                                             </div>
+
                                         </Accordion.Body>
 
 
@@ -435,7 +435,7 @@ function Filter() {
 
 
 
-                                            
+
 
 
                                             <div className="form-check">
@@ -632,11 +632,7 @@ function Filter() {
 
                                                             <p className="card-text">{item.description}</p>
 
-                                                            {/* <div className="card-footer d-flex align-items-end pt-3 px-0 pb-0 mt-auto">
 
-                                                <a className="btn btn-dark shadow-0 me-1">Add to cart</a>
-
-                                            </div> */}
 
 
                                                         </div>

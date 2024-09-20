@@ -161,17 +161,9 @@ function Cart() {
     // Cart Total Price
     const TotalPrice = () => {
 
-
         return CartItems.reduce((total, item) => total + item.quantity * (item.offer_is_available ? item.offer_price : item.price), 0)
 
-
     }
-
-
-
-
-
-
 
 
 
@@ -182,8 +174,6 @@ function Cart() {
 
 
         <>
-
-
 
             <section className="mt-4  mb-5 Cart-paddin pt-4">
 
@@ -213,21 +203,12 @@ function Cart() {
                                     }
 
 
-
-
-
-
                                     {
 
                                         CartItems.length > 0 ?
 
                                             CartItems.map((item) => (
-
-
-
-
-
-
+                                                
 
                                                 <div className="row gy-3 mb-4">
 

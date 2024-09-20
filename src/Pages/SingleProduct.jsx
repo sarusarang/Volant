@@ -45,9 +45,6 @@ function SingleProduct() {
 
 
 
-
-
-
     const Navigate = useNavigate()
 
 
@@ -182,12 +179,7 @@ function SingleProduct() {
 
             }
 
-
         }
-
-
-
-
 
 
         window.scrollTo(0, 0);
@@ -498,13 +490,7 @@ function SingleProduct() {
 
                         </section>
 
-
-
-
-
-
-
-
+                        
 
                         {/* Products */}
                         <section className='pb-5 pt-5 mt-5' style={{ borderTop: '3px dotted #eee' }}>
