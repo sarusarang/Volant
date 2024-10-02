@@ -49,6 +49,25 @@ function SingleProduct() {
 
 
 
+    const [imageSrc, setImageSrc] = useState(SelectedColor.image);
+    const [fadeClass, setFadeClass] = useState('image-fade');
+
+    useEffect(() => {
+        // Trigger the fade-out animation
+        setFadeClass('image-fade');
+
+        // Set a timeout to change the source and apply fade-in after fade-out
+        const timeout = setTimeout(() => {
+            setImageSrc(SelectedColor.image);
+            setFadeClass('image-fade-active');
+        }, 500); // Match this duration with your fade-out time
+
+        return () => clearTimeout(timeout);
+    }, [SelectedColor.image]); // Effect runs when SelectedColor.image changes
+
+
+
+
     useEffect(() => {
 
 
@@ -304,15 +323,16 @@ function SingleProduct() {
 
 
                                         <div className="border rounded-4 mb-3 d-flex justify-content-center">
-
                                             <a data-fslightbox="mygalley" className="rounded-4" target="_blank" data-type="image">
-
-                                                <img loading='lazy' style={{ maxWidth: '100%', maxHeight: '100vh', margin: 'auto' }} className="rounded-4 fit" src={SelectedColor.image} />
-
+                                                <img
+                                                    loading="lazy"
+                                                    className={`rounded-4 fit ${fadeClass}`}
+                                                    src={imageSrc}
+                                                    style={{ maxWidth: '100%', maxHeight: '100vh', margin: 'auto' }}
+                                                    onLoad={() => setFadeClass('fade-in')} // Ensure it fades in once the image is loaded
+                                                />
                                             </a>
-
                                         </div>
-
 
                                     </aside>
 
@@ -490,7 +510,7 @@ function SingleProduct() {
 
                         </section>
 
-                        
+
 
                         {/* Products */}
                         <section className='pb-5 pt-5 mt-5' style={{ borderTop: '3px dotted #eee' }}>
